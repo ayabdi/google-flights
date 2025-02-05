@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { Container, Paper, Box, Button } from '@mui/material'
 import SearchIcon from '@mui/icons-material/Search'
-import FlightSearchBar, { FormState } from './FlightSearchBar'
+import FlightSearchBar, { FormState } from '../components/FlightSearchBar'
 import { useNavigate } from 'react-router-dom'
 
 const Home = () => {

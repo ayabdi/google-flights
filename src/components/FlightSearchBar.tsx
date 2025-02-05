@@ -163,15 +163,14 @@ const FlightSearchBar: React.FC<FlightSearchBarProps> = ({ formState, handleChan
           freeSolo
           options={fromOptions}
           sx={{ flex: 1.5 }}
-          getOptionLabel={option => option.name}
+          getOptionLabel={option => (option as Airport).name}
           inputValue={formState.from}
           onInputChange={(_, newInputValue) => {
             handleChange('from', newInputValue)
           }}
           onChange={(_, newValue) => {
-            console.log(newValue)
-            handleChange('originSkyId', newValue?.skyId)
-            handleChange('originEntityId', newValue?.entityId)
+            handleChange('originSkyId', (newValue as Airport).skyId)
+            handleChange('originEntityId',(newValue as Airport).entityId)
           }}
           onClose={() => {
             if (!fromOptions.map(d => d.name).includes(formState.from)) {
@@ -203,13 +202,13 @@ const FlightSearchBar: React.FC<FlightSearchBarProps> = ({ formState, handleChan
           options={toOptions}
           sx={{ flex: 1.5 }}
           inputValue={formState.to}
-          getOptionLabel={option => option.name}
+          getOptionLabel={option => (option as Airport).name}
           onInputChange={(_, newInputValue) => {
             handleChange('to', newInputValue)
           }}
           onChange={(_, newValue) => {
-            handleChange('destinationEntityId', newValue?.entityId)
-            handleChange('destinationSkyId', newValue?.skyId)
+            handleChange('destinationEntityId', (newValue as Airport).entityId)
+            handleChange('destinationSkyId', (newValue as Airport).skyId)
           }}
           onClose={() => {
             if (!toOptions.map(d => d.name).includes(formState.to)) {

@@ -4,8 +4,8 @@ import CssBaseline from "@mui/material/CssBaseline";
 import { LocalizationProvider } from "@mui/x-date-pickers";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import Home from "./Home";
-import FlightsList from "./FlightsList";
+import Home from "./pages/Home";
+import FlightsList from "./pages/FlightsList";
 
 function App() {
   const darkTheme = createTheme({

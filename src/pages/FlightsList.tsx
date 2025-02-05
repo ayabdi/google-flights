@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import { Container, Box } from '@mui/material'
-import FlightSearchBar, { FormState } from './FlightSearchBar'
+import FlightSearchBar, { FormState } from '../components/FlightSearchBar'
 import { useSearchParams } from 'react-router-dom'
-import FlightItineraries from './FlightItenaries'
+import FlightItineraries from '../components/FlightItenaries'
 
 const FlightsList: React.FC = () => {
   const [searchParams] = useSearchParams()
