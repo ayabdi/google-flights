@@ -54,7 +54,7 @@ const Home = () => {
   }
 
   return (
-    <Container maxWidth={false} sx={{ paddingX: 15 }}>
+    <Container maxWidth='lg' sx={{ paddingX: 15 }}>
       <Box
         sx={{
           height: 300,
@@ -64,7 +64,7 @@ const Home = () => {
         }}
       />
       <h1 style={{ marginTop: -55 }}>Flights</h1>
-      <Box sx={{ position: 'relative', width: '80%', margin: 'auto' }}>
+      <Box sx={{ position: 'relative', width: '90%', margin: 'auto' }}>
         <Paper elevation={4} sx={{ padding: 3 }}>
           <FlightSearchBar formState={formState} handleChange={handleChange} />
         </Paper>
@@ -79,7 +79,8 @@ const Home = () => {
               bottom: -20,
               left: '50%',
               transform: 'translateX(-50%)',
-              borderRadius: 24
+              borderRadius: 24,
+              textTransform: 'none'
             }}
           >
             Search
