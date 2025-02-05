@@ -113,7 +113,7 @@ const FlightItineraries: React.FC<FlightItinerariesProps> = ({ itineraries }) =>
                         {itinerary.legs[0].segments.length === 2
                           ? itinerary.legs[0].segments
                               .slice(0, -1)
-                              .map((segment, index) => {
+                              .map((segment: any, index: any) => {
                                 const nextSegment = itinerary.legs[0].segments[index + 1]
                                 const layoverTime = calculateLayoverTime(segment.arrival, nextSegment.departure)
                                 return `${layoverTime} ${nextSegment.origin.displayCode}`
@@ -122,7 +122,7 @@ const FlightItineraries: React.FC<FlightItinerariesProps> = ({ itineraries }) =>
                           : itinerary.legs[0].segments.length > 2
                           ? itinerary.legs[0].segments
                               .slice(1)
-                              .map(segment => segment.origin.displayCode)
+                              .map((segment: any) => segment.origin.displayCode)
                               .join(' · ')
                           : 'Direct flight'}
                       </Typography>
@@ -146,7 +146,7 @@ const FlightItineraries: React.FC<FlightItinerariesProps> = ({ itineraries }) =>
 
             <AccordionDetails sx={{ paddingY: 0, borderTop: '1px solid', borderColor: 'grey.300' }}>
               <Box sx={{ paddingX: 1, paddingY: 2 }}>
-                {firstLeg.segments.map((segment, index) => (
+                {firstLeg.segments.map((segment: any, index: number) => (
                   <Box key={segment.id}>
                     <Box sx={{ display: 'flex', gap: 2 }}>
                       <img
