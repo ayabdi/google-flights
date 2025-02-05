@@ -4,6 +4,8 @@ import { DatePicker } from '@mui/x-date-pickers'
 import SwapHorizIcon from '@mui/icons-material/SwapHoriz'
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward'
 import PersonIcon from '@mui/icons-material/Person'
+import LocationOnIcon from '@mui/icons-material/LocationOn'
+
 import dayjs from 'dayjs'
 
 export interface Airport {
@@ -160,8 +162,8 @@ const FlightSearchBar: React.FC<FlightSearchBarProps> = ({ formState, handleChan
         <Autocomplete
           freeSolo
           options={fromOptions}
-          sx={{ flex: 1 }}
-          getOptionLabel={option=>option.name}
+          sx={{ flex: 1.5 }}
+          getOptionLabel={option => option.name}
           inputValue={formState.from}
           onInputChange={(_, newInputValue) => {
             handleChange('from', newInputValue)
@@ -187,7 +189,7 @@ const FlightSearchBar: React.FC<FlightSearchBarProps> = ({ formState, handleChan
                   ...params.InputProps,
                   startAdornment: (
                     <InputAdornment position="start">
-                      <SwapHorizIcon />
+                      <Box sx={{ height: 16, width: 16, borderRadius: '50%', border: '3px solid', marginLeft: 0.5 }}></Box>
                     </InputAdornment>
                   ),
                   endAdornment: <>{params.InputProps.endAdornment}</>
@@ -199,16 +201,16 @@ const FlightSearchBar: React.FC<FlightSearchBarProps> = ({ formState, handleChan
         <Autocomplete
           freeSolo
           options={toOptions}
-          sx={{ flex: 1 }}
+          sx={{ flex: 1.5 }}
           inputValue={formState.to}
-          getOptionLabel={option=>option.name}
+          getOptionLabel={option => option.name}
           onInputChange={(_, newInputValue) => {
             handleChange('to', newInputValue)
           }}
           onChange={(_, newValue) => {
             handleChange('destinationEntityId', newValue?.entityId)
             handleChange('destinationSkyId', newValue?.skyId)
-        }}
+          }}
           onClose={() => {
             if (!toOptions.map(d => d.name).includes(formState.to)) {
               handleChange('to', '')
@@ -225,7 +227,7 @@ const FlightSearchBar: React.FC<FlightSearchBarProps> = ({ formState, handleChan
                   ...params.InputProps,
                   startAdornment: (
                     <InputAdornment position="start">
-                      <SwapHorizIcon />
+                      <LocationOnIcon sx={{ marginLeft: 0.5 }} />
                     </InputAdornment>
                   ),
                   endAdornment: <>{params.InputProps.endAdornment}</>
