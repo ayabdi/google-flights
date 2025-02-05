@@ -100,24 +100,34 @@ const FlightItineraries: React.FC<FlightItinerariesProps> = ({ itineraries }) =>
 
                 {/* Stops & Layovers */}
                 <Box sx={{ flex: 1 }}>
-                  <Typography fontWeight={400}>
-                    {firstLeg.stopCount} {firstLeg.stopCount === 1 ? 'stop' : 'stops'}
-                  </Typography>
-                  <Typography variant="body2" color="textSecondary" fontSize={12}>
-                    {firstLeg.segments.length > 1
-                      ? firstLeg.segments
-                          .slice(0, -1)
-                          .map((segment, index) => {
-                            const nextSegment = firstLeg.segments[index + 1]
-                            return nextSegment
-                              ? `${calculateLayoverTime(segment.arrival, nextSegment.departure)} ${
-                                  nextSegment.origin.displayCode
-                                }`
-                              : ''
-                          })
-                          .join(' · ')
-                      : 'Direct flight'}
-                  </Typography>
+                  {firstLeg.stopCount === 0 ? (
+                    <Typography fontWeight={400}>
+                      Nonstop
+                    </Typography>
+                  ) : (
+                    <Box>
+                      <Typography fontWeight={400}>
+                        {firstLeg.stopCount} {firstLeg.stopCount === 1 ? 'stop' : 'stops'}
+                      </Typography>
+                      <Typography variant="body2" color="textSecondary" fontSize={12}>
+                        {itinerary.legs[0].segments.length === 2
+                          ? itinerary.legs[0].segments
+                              .slice(0, -1)
+                              .map((segment, index) => {
+                                const nextSegment = itinerary.legs[0].segments[index + 1]
+                                const layoverTime = calculateLayoverTime(segment.arrival, nextSegment.departure)
+                                return `${layoverTime} ${nextSegment.origin.displayCode}`
+                              })
+                              .join(' · ')
+                          : itinerary.legs[0].segments.length > 2
+                          ? itinerary.legs[0].segments
+                              .slice(1)
+                              .map(segment => segment.origin.displayCode)
+                              .join(' · ')
+                          : 'Direct flight'}
+                      </Typography>
+                    </Box>
+                  )}
                 </Box>
 
                 {/* CO2 Emissions */}
